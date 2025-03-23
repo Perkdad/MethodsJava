@@ -1,0 +1,87 @@
+/*
+ * Name:       Aaron Perkins
+ *
+ * Course:     CS-12, Spring 2025
+ *
+ * Date:       03/02/2025
+ *
+ * Filename:   MethodsAAPE.java
+ *
+ * Purpose:    Practice writing Methods and breaking up code into
+ *             reusable sections
+ */
+
+import java.util.Scanner;
+ 
+public class MethodsAAPE {
+    
+    //************
+    // Main Method
+    //************
+    public static void main(String [] args) {
+        
+        //************
+        //Declarations
+        //************
+        double tempFahrenheit; //input
+        double tempCelcius; //output
+        double valueDollar; //input
+        double valueEuro; //output
+        
+        //********************************
+        //Fahrenheit to Celcius Conversion
+        //********************************
+        tempFahrenheit = getDoubleValue("Enter the temperature in Fahrenheit: "); //obtain input
+        tempCelcius = convertFToC(tempFahrenheit); //calculation
+        displayText(tempFahrenheit + " degrees Fahrenheit is " + tempCelcius + " degrees Celcius"); //display results
+        
+        //*************************
+        //Dollar to Euro Conversion
+        //*************************
+        valueDollar = getDoubleValue("\nEnter the value in Dollars: $"); //obtain input
+        valueEuro = convertDollarToEuro(valueDollar); //calculation
+        displayText("$" + valueDollar + " is currently valued at " + valueEuro + " Euros"); //display results
+    }
+    
+    //**********************
+    //Method: Scanner Inputs
+    //**********************
+    private static double getDoubleValue(String promptText) {
+        double doubleValue;
+        Scanner input = new Scanner(System.in);
+        
+        System.out.println();
+        System.out.print(promptText);
+        doubleValue = input.nextDouble();
+        return doubleValue;
+    }
+    
+    //***************************
+    //Method: Display Text String
+    //***************************
+    private static void displayText(String displayText) {
+        System.out.println();
+        System.out.println("==================================================================");
+        System.out.println("===> " + displayText);
+        System.out.println("==================================================================");
+    }
+    
+    //*************************************
+    //Method: Convert Fahrenheit to Celcius
+    //*************************************
+    private static double convertFToC(double fahrenheit) {
+        double celcius = (double) 5 / 9 * (fahrenheit - 32);
+        return celcius;
+    }
+    
+    //********************************
+    //Method: Convert Dollars to Euros
+    //********************************
+    private static double convertDollarToEuro(double dollar) {
+        double euro;
+        final double CONVERT_DOLLAR_TO_EURO = 0.960221;
+        euro = dollar * CONVERT_DOLLAR_TO_EURO;
+        return euro;
+    }
+    
+}
